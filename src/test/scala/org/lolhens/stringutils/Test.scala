@@ -13,7 +13,8 @@ object Test {
     assert(string.padLeft(5, "foo") == "fabcd")
     assert(string.padLeft(12, "foo") == "foofoofoabcd")
 
-    assert(string.splitLit("bc", 4) == List("a", "d", "", ""))
-    assert(string.splitLit("abcd") == List("", ""))
+    assert("abcdabcdabcd".splitLit("bc", 8) == List("a", "da", "da", "d", "", "", "", ""))
+    assert("abcdabcdabcd".splitLit("abcd") == List("", "", "", ""))
+    assert("abcdabcdabcd".splitLit("bc", 2) == List("a", "da", "dabcd"))
   }
 }
