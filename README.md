@@ -1,0 +1,2 @@
+# ScalaStringUtils
+Scala string utilities
