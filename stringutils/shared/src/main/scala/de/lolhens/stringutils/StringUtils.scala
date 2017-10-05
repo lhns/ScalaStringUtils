@@ -39,8 +39,8 @@ object StringUtils {
     def replaceAllLit(s: Seq[String], f: String => String): String =
       s.map(_.escapeRegex).mkString("|").r.replaceAllIn(self, e => f(e.matched))
 
-    def replaceAllRegex(regex: String, f: List[String] => String): String =
-      regex.r.replaceAllIn(self, e => Regex.quoteReplacement(f(e.subgroups)))
+    def replaceAllRegex(regex: String, f: PartialFunction[List[String], String]): String =
+      regex.r.replaceAllIn(self, e => Regex.quoteReplacement(f.lift(e.subgroups).getOrElse(e.matched)))
   }
 
 }
