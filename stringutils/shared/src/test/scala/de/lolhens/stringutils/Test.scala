@@ -1,6 +1,6 @@
-package org.lolhens.stringutils
+package de.lolhens.stringutils
 
-import org.lolhens.stringutils.StringUtils._
+import de.lolhens.stringutils.StringUtils._
 
 object Test {
   def main(args: Array[String]): Unit = {

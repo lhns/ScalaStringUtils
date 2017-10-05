@@ -1,4 +1,4 @@
-package org.lolhens.stringutils
+package de.lolhens.stringutils
 
 import scala.language.implicitConversions
 
