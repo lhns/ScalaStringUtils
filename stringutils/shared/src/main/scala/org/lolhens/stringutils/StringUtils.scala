@@ -2,7 +2,7 @@ package org.lolhens.stringutils
 
 import scala.language.implicitConversions
 
-object StringUtils extends AnyVal {
+object StringUtils {
 
   implicit class StringOps(val self: String) extends AnyVal {
     def padRight(len: Int, elem: String = " "): String =

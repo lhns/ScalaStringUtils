@@ -3,7 +3,9 @@ inThisBuild(Seq(
   organization := "de.lolhens",
   version := "0.0.1",
 
-  scalaVersion := "2.12.3"
+  scalaVersion := "2.12.3",
+
+  bintrayReleaseOnPublish := false
 ))
 
 name := (name in ThisBuild).value
