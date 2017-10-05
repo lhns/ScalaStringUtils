@@ -2,6 +2,7 @@ package de.lolhens.stringutils
 
 import scala.annotation.tailrec
 import scala.language.implicitConversions
+import scala.util.matching.Regex
 
 object StringUtils {
 
@@ -39,7 +40,7 @@ object StringUtils {
       s.map(_.escapeRegex).mkString("|").r.replaceAllIn(self, e => f(e.matched))
 
     def replaceAllRegex(regex: String, f: List[String] => String): String =
-      regex.r.replaceAllIn(self, e => f(e.subgroups))
+      regex.r.replaceAllIn(self, e => Regex.quoteReplacement(f(e.subgroups)))
   }
 
 }
