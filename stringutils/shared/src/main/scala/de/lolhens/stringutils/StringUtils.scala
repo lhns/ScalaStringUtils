@@ -1,5 +1,6 @@
 package de.lolhens.stringutils
 
+import scala.annotation.tailrec
 import scala.language.implicitConversions
 
 object StringUtils {
@@ -20,6 +21,7 @@ object StringUtils {
         self
 
     def splitLit(sep: String, length: Int = -1): List[String] = {
+      @tailrec
       def splitRec(string: String, length: Int, parts: List[String] = Nil): List[String] = {
         val sepIndex = string.indexOf(sep)
         if (sepIndex == -1 || length == 0)
@@ -36,7 +38,7 @@ object StringUtils {
     def replaceAllLit(s: Seq[String], f: String => String): String =
       s.map(_.escapeRegex).mkString("|").r.replaceAllIn(self, e => f(e.matched))
 
-    def replaceAll(regex: String, f: List[String] => String): String =
+    def replaceAllRegex(regex: String, f: List[String] => String): String =
       regex.r.replaceAllIn(self, e => f(e.subgroups))
   }
 
