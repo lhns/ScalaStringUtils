@@ -1,7 +1,7 @@
 inThisBuild(Seq(
   name := "ScalaStringUtils",
   organization := "de.lolhens",
-  version := "0.0.5",
+  version := "0.1.0",
 
   scalaVersion := "2.12.3",
 

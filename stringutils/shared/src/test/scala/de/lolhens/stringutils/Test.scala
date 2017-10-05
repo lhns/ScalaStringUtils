@@ -16,5 +16,9 @@ object Test {
     assert("abcdabcdabcd".splitLit("bc", 8) == List("a", "da", "da", "d", "", "", "", ""))
     assert("abcdabcdabcd".splitLit("abcd") == List("", "", "", ""))
     assert("abcdabcdabcd".splitLit("bc", 2) == List("a", "da", "dabcd"))
+
+    val r"(.*)$a-(.*)$b" = "foo-bar"
+    assert(a == "foo")
+    assert(b == "bar")
   }
 }
