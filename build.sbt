@@ -1,11 +1,26 @@
-name := "ScalaStringUtils"
+inThisBuild(Seq(
+  name := "ScalaStringUtils",
+  organization := "de.lolhens",
+  version := "0.0.1",
 
-version := "0.0.0"
+  scalaVersion := "2.12.3"
+))
 
-scalaVersion := "2.12.3"
+name := (name in ThisBuild).value
 
-externalResolvers := Seq(
-  Resolver.defaultLocal,
-  "artifactory-maven" at "http://lolhens.no-ip.org/artifactory/maven-public/",
-  Resolver.url("artifactory-ivy", url("http://lolhens.no-ip.org/artifactory/ivy-public/"))(Resolver.ivyStylePatterns)
-)
+lazy val root = project.in(file("."))
+  .settings(publishArtifact := false)
+  .aggregate(
+    stringutilsJVM_2_11,
+    stringutilsJVM_2_12,
+    stringutilsJS_2_11,
+    stringutilsJS_2_12
+  )
+
+lazy val stringutils = crossProject.crossType(CrossType.Full)
+  .settings(name := (name in ThisBuild).value)
+
+lazy val stringutilsJVM_2_11 = stringutils.jvm.cross("2.11.11").settings(name := (name in ThisBuild).value)
+lazy val stringutilsJVM_2_12 = stringutils.jvm.cross("2.12.3").settings(name := (name in ThisBuild).value)
+lazy val stringutilsJS_2_11 = stringutils.js.cross("2.11.11").settings(name := (name in ThisBuild).value)
+lazy val stringutilsJS_2_12 = stringutils.js.cross("2.12.3").settings(name := (name in ThisBuild).value)
