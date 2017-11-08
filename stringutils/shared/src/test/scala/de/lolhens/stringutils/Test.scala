@@ -17,8 +17,20 @@ object Test {
     assert("abcdabcdabcd".splitLit("abcd") == List("", "", "", ""))
     assert("abcdabcdabcd".splitLit("bc", 2) == List("a", "da", "dabcd"))
 
-    val r"(.*)$a-(.*)$b" = "foo-bar"
+    val r"($c($a.*)-($b.*)-(.*))" = "foo-bar-test"
     assert(a == "foo")
     assert(b == "bar")
+
+    assert("asdfsdasdsdjsj".replaceAllLit("sd", "*-") == "asdfsdasdsdjsj".replaceAllLiterally("sd", "*-"))
+
+    assert(("-12367" match {
+      case r"(-?([0-9]|%)+)" => c
+      case _ => "n"
+    }) == "foo-bar-test")
+
+    assert("abchelloworld".replaceAllLit(Seq("hello", "abc")) {
+      case "abc" => "123"
+      case "hello" => "world"
+    } == "123worldworld")
   }
 }
