@@ -4,7 +4,7 @@ import de.lolhens.stringutils.StringUtils._
 
 object Test {
   def main(args: Array[String]): Unit = {
-    val string = "abcd"
+    /*val string = "abcd"
 
     assert(string.padRight(2, "foo") == "abcd")
     assert(string.padRight(5, "foo") == "abcdf")
@@ -31,6 +31,9 @@ object Test {
     assert("abchelloworld".replaceAllLit(Seq("hello", "abc")) {
       case "abc" => "123"
       case "hello" => "world"
-    } == "123worldworld")
+    } == "123worldworld")*/
+
+    val r"asdf(.*)${test}a" = "asdfjkla"
+    println(test)
   }
 }

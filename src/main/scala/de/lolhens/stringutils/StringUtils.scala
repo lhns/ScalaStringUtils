@@ -77,7 +77,7 @@ object StringUtils {
 
   implicit class RegexContext(sc: StringContext) {
     def r: Regex = {
-      val notEscaped = "(?<!\\\\)(?:\\\\\\\\)*"
+      val notEscaped = """(?<!\\)(?:\\\\)*"""
 
       def captureNone(regex: String, captureLast: Boolean = false): String = {
         val captureLastRegex = if (captureLast) s".*(?:$notEscaped)${"(".escapeRegex}(?=[^${"?:".escapeRegex}])" else ""
